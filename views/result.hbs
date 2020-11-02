@@ -1,0 +1,47 @@
+<hr>
+<h3>Search result for: {{ q }}</h3>
+
+{{#if hasContent}}
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                {{#each field}}
+                    <th scope="col">{{this}}</th>
+                {{/each}}
+            </tr>
+        </thead>
+
+        <tbody>
+            {{#each recs}}
+                <tr>
+                    <td>{{ this.app_id }}</td>
+                    <td>{{ this.name }}</td>
+                    <td>{{ this.category }}</td>
+                    <td>{{ this.rating }}</td>
+                    <td>{{ this.installs }}</td>
+                </tr>
+            {{/each}}
+        </tbody>
+    </table>
+{{else}}
+    <h5>Sorry! No result is found!</h5>
+{{/if}}
+
+{{!-- try --}}
+<div class="d-flex justify-content-end">
+    {{#if currOffsetIndex}}
+        <div class="mr-3">
+            <a class="btn btn-primary" href={{ prevOffsetIndex }} role="button">Prev</a>  
+        </div>
+    {{/if}}
+    <div>
+        {{#if isNotEnd}}
+            <a class="btn btn-primary" href={{ nextOffsetIndex }} role="button">Next</a>
+        {{/if}}
+    </div>
+</div>
+
+<div class="mt-3">
+    Click <a href="/"><strong>HERE</strong></a> to go back to the main page!
+</div>
+
