@@ -71,16 +71,7 @@ app.get('/search', async (req, res) => {
     let prevOffsetIndex = currOffsetIndex
     let nextOffsetIndex = currOffsetIndex + OFFSET_LIMIT
 
-    try {
-        // Call the getPage function to query the data from the DB
-        getPage (res, conn, q, currOffsetIndex, prevOffsetIndex, nextOffsetIndex)
-    }
-    catch (err) {
-        console.error(err)
-    }
-    finally {
-        conn.release()
-    }
+    getPage (res, conn, q, currOffsetIndex, prevOffsetIndex, nextOffsetIndex)
 })
 
 // Prev Page
@@ -98,16 +89,8 @@ app.get('/prev/:q/:offset', async (req, res) => {
     // Add currOffsetIndex by OFFSET_LIMIT to get next page index 
     let nextOffsetIndex = currOffsetIndex + OFFSET_LIMIT
 
-    try {
-        // Call the getPage function to query the data from the DB
-        getPage (res, conn, q, currOffsetIndex, prevOffsetIndex, nextOffsetIndex)
-    }
-    catch (err) {
-        console.error(err)
-    }
-    finally {
-        conn.release()
-    }
+    getPage (res, conn, q, currOffsetIndex, prevOffsetIndex, nextOffsetIndex)
+
 })
 
 // Next Page
@@ -125,16 +108,7 @@ app.get('/next/:q/:offset', async (req, res) => {
     // Add currOffsetIndex by OFFSET_LIMIT to get next page index 
     let nextOffsetIndex = currOffsetIndex + OFFSET_LIMIT
 
-    try {
-        // Call the getPage function to query the data from the DB
-        getPage (res, conn, q, currOffsetIndex, prevOffsetIndex, nextOffsetIndex)
-    }
-    catch (err) {
-        console.error(err)
-    }
-    finally {
-        conn.release()
-    }
+    getPage (res, conn, q, currOffsetIndex, prevOffsetIndex, nextOffsetIndex)
 })
 
 startApp(app, pool)
